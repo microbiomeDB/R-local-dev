@@ -42,7 +42,7 @@ default:
 
 .PHONY: install
 install:
-	@$(BIN_DIR)/lib.sh "install"
+	@$(BIN_DIR)/lib.sh "checkoutAll"
 
 
 .PHONY: update

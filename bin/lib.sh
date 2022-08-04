@@ -7,15 +7,15 @@ R_REPOSITORIES=( \
   Rserve \
 )
 
-JAVA_PROJECTS=( EdaCommon ${JAVA_SERVICE_PROJECTS[*]} )
-ALL_PROJECTS=( ${JAVA_PROJECTS[*]} Rserve )
+# This could become a way to copy the dockerfile from Rserve to the top level? We don't want to copy all of it, just the CRAN packages
+# and maybe the versions of veupath R repos
+# function configure {
+#   [ -f .env.local ] || (echo "Initializing .env.local to sample file." && cp .env.local.sample .env.local)
+#   [ "$EDITOR" == "" ] && EDITOR='/usr/bin/vi'
+#   $EDITOR .env.local
+# }
 
-function configure {
-  [ -f .env.local ] || (echo "Initializing .env.local to sample file." && cp .env.local.sample .env.local)
-  [ "$EDITOR" == "" ] && EDITOR='/usr/bin/vi'
-  $EDITOR .env.local
-}
-
+# Runs an operation on all of the projects in an array (here is R_REPOSITORIES)
 function doProjectsOperation {
   projectArrayName=$1[@]
   projects=("${!projectArrayName}")
@@ -32,27 +32,15 @@ function doProjectsOperation {
   cd ..
 }
 
-function doJavaProjectsOperation {
-  doProjectsOperation JAVA_PROJECTS "$@"
-}
-
-# Also maybe a regular docker build?
-function install {
-  checkoutAll
-}
-
 function checkoutAll {
-  cd projects
   for project in "${R_REPOSITORIES[@]}"; do
     git clone git@github.com:VEuPathDB/${project}.git
   done
-  cd ..
 }
 
 function updateAll {
   doProjectsOperation R_REPOSITORIES "git pull"
 }
-
 
 function runDocker {
   source .env.local
