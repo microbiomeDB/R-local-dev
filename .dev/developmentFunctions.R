@@ -64,3 +64,27 @@ loadDevPackages <- function(packagesToDevelop) {
   cat(successMessage)
 
 }
+
+
+## Run all tests in one file
+# Usually we can do this using devtools::test_file() but it requires
+# us to do a lot of directory changing. The testFile function below
+# handles the directory changing for us.
+# NOTE: this function assumes the packages have the standard testthat
+# directory structure: package/tests/testthat/test-file.R
+# package = string, name of package
+# file = string, name of test file
+# Example run: testFile('plot.data', 'test-line.R')
+testFile <- function(package, file) {
+  
+  # Set the working directory to the package
+  setwd(package)
+  cat(paste0('Working directory set to ', getwd(), '\n'))
+
+  # Run the test file
+  devtools::test_file(paste0('tests/testthat/',file))
+
+  # Return to the top level
+  setwd('..')
+  cat(paste0('\nWorking directory returned to ', getwd(), '\n'))
+}
