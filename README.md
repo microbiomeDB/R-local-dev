@@ -18,6 +18,6 @@ Type 'q()' to quit R.
 3. Run `source('.dev/getStarted.R')` to prep the environment. This script loads development libraries and sources some functions helpful for development.
 4. Finally load and/or install VEuPathDB packages using `loadDevPackages`. If we want to work on plot.data, for example, run `loadDevPackages('plot.data')`. 
 5. Make changes to the package, reload changes with `load_all('plot.data')` (or other package name).
-6. Once you're happy with the changes, run all the test_that changes using `devtools::test('plot.data')`.
-7. Quit using `quit()`.
+6. Once you're happy with the changes, run all the test_that changes using `devtools::test('plot.data')`. Alternatively, run all the tests in one file (for example 'test-line.R') using `testFile('plot.data', 'test-line.R')`.
+7. All done? Quit using `quit()`.
 
