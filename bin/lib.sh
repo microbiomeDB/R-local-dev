@@ -42,32 +42,32 @@ function updateAll {
   doProjectsOperation R_REPOSITORIES "git pull"
 }
 
-function runDocker {
-  source .env.local
-  source .env
-  cd projects/EdaDataService
-  docker-compose -f docker-compose.yml -f docker-compose.yml.local up --build
-}
+# function runDocker {
+#   source .env.local
+#   source .env
+#   cd projects/EdaDataService
+#   docker-compose -f docker-compose.yml -f docker-compose.yml.local up --build
+# }
 
-function buildRserve {
-  cd projects/Rserve
-  docker build -t rserve . --no-cache
-  cd ../..
-}
+# function buildRserve {
+#   cd projects/Rserve
+#   docker build -t rserve . --no-cache
+#   cd ../..
+# }
 
-function startRserve {
-  source .env.local
-  source .env
-  docker="docker run -p ${RSERVE_SERVER_PORT}:6311 --rm rserve:latest"
-  echo "$docker"
-  read -s -p "Password: " PW
-  echo
-  echo $PW | sudo -S $docker &> logs/Rserve.log &
-}
+# function startRserve {
+#   source .env.local
+#   source .env
+#   docker="docker run -p ${RSERVE_SERVER_PORT}:6311 --rm rserve:latest"
+#   echo "$docker"
+#   read -s -p "Password: " PW
+#   echo
+#   echo $PW | sudo -S $docker &> logs/Rserve.log &
+# }
 
-function stopRserve {
-  docker ps | grep rserve | awk '{ print $1 }' | xargs docker stop
-}
+# function stopRserve {
+#   docker ps | grep rserve | awk '{ print $1 }' | xargs docker stop
+# }
 
 if [ "$#" -ge 2 ]; then
   echo "USAGE: lib.sh [command]"

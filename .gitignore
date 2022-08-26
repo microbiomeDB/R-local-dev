@@ -1,6 +1,7 @@
-projects
-logs
+# Development
 .DS_store
+.vscode/
+.devcontainer/
 
 # Repositories
 Rserve/

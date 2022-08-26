@@ -4,6 +4,7 @@ base_dir :=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 pwd = $(shell pwd)
 local_name = rdev
 tag ?= dev
+Rpassword = password
 
 C_BLUE := "\\033[94m"
 C_NONE := "\\033[0m"
@@ -56,12 +57,13 @@ build:
 	@docker build -t $(local_name):$(tag) .
 
 
-.PHONY: start
-run:
-	@docker run -d -p 8788:8787 -e PASSWORD=mypass -v $(pwd):/home/rdev/Documents rdev:dev
-# 	@open http://localhost:8081
-# 	@docker run -p 8081:8888 --rm -it $(local_name):$(tag) $(run_cmd)
+.PHONY: start-shell
+start-shell:
+	@docker run -p 8081:8888 --rm -v $(pwd):/home/dev -it $(local_name):$(tag) $(run_cmd)
 
 .PHONY: stop
 stop:
-	@docker stop shiny-dev
+	@docker stop $(local_name):$(tag)
+
+# TO DO create make start-rstudio
+# Is rstudio really necessary? idk if any of us use it currently...
