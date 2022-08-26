@@ -56,7 +56,7 @@ loadDevPackages <- function(packagesToDevelop) {
     , "After making any changes to the code, reload the package using\n\t"
     , "load_all(", packagesToDevelop[1], ")\n\n"
     , "Test changes by running a specific test file with\n\t"
-    , "devtools::test_file(path-to-file, package=", packagesToDevelop[1], ")\n\n"
+    , "testFile(", packagesToDevelop[1], "testFileName)\n\n"
     , "or by running all tests with\n\t"
     , "devtools::test(", packagesToDevelop[1], ")\n"
   )
