@@ -44,9 +44,9 @@ loadDevPackages <- function(packagesToDevelop = veupathdbPackages) {
 
   # Print some useful info
   successMessage <- paste0(
-    "\n\n\n\nSuccessfully loaded the following packages:\n\n\t"
-    , paste(packagesToDevelop, collapse='\n')
-    , "\n\nAll other VEuPathDB packages were installed using the latest version on github. \n \n"
+    crayon::bold("\n\n\n\nSuccessfully loaded the following packages:\n\n\t")
+    , crayon::bold(paste(packagesToDevelop, collapse='\n\t'))
+    , "\n\nAny other VEuPathDB packages were installed using the latest version on github. \n \n"
     , "After making any changes to the code, reload the package using\n\t"
     , "load_all(", packagesToDevelop[1], ")\n\n"
     , "Test changes by running a specific test file with\n\t"
@@ -55,7 +55,7 @@ loadDevPackages <- function(packagesToDevelop = veupathdbPackages) {
     , "devtools::test(", packagesToDevelop[1], ")\n"
   )
 
-  cat(successMessage)
+  cat(crayon::cyan(successMessage))
 
 }
 
