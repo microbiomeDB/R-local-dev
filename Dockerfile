@@ -18,19 +18,23 @@ RUN apt-get update && apt-get install -y \
 RUN R -e "install.packages('Rserve', version='1.8-9', repos='http://rforge.net')"
 
 ### CRAN
+RUN R -d "install.packages('ape')"
 RUN R -e "install.packages('bit64')"
+RUN R -e "install.packages('crayon')"
 RUN R -e "install.packages('data.table')"
-RUN R -e "install.packages('jsonlite')"
-RUN R -e "install.packages('remotes')"
-RUN R -e "install.packages('Rcpp')"
-RUN R -e "install.packages('dotenv')"
 RUN R -e "install.packages('devtools')"
-RUN R -e "install.packages('sloop')"
-RUN R -e "install.packages('scales')"
+RUN R -e "install.packages('dotenv')"
+RUN R -e "install.packages('jsonlite')"
 RUN R -e "install.packages('lubridate')"
 RUN R -e "install.packages('moments')"
+RUN R -d "install.packages('phytools')"
+RUN R -e "install.packages('Rcpp')"
+RUN R -e "install.packages('remotes')"
+RUN R -e "install.packages('sloop')"
+RUN R -e "install.packages('scales')"
+RUN R -d "install.packages('vegan')"
 RUN R -e "install.packages('zoo')"
-RUN R -e "install.packages('crayon')"
+
 
 # possibly for RStudio
 EXPOSE 8787
