@@ -8,7 +8,7 @@ veupathdbPackages <- c('plot.data','veupathUtils','microbiomeComputations')
 # Example use: loadDevPackages('plot.data')
 loadDevPackages <- function(packagesToDevelop = veupathdbPackages) {
 
-  if (!(packagesToDevelop %in% veupathdbPackages)) {
+  if (!all(packagesToDevelop %in% veupathdbPackages)) {
     stop(paste('packagesToDevelop must be a subset of ', veupathdbPackages))
   }
 
@@ -45,12 +45,12 @@ loadDevPackages <- function(packagesToDevelop = veupathdbPackages) {
   # Print some useful info
   successMessage <- paste0(
     "\n\n\n\nSuccessfully loaded the following packages:\n\n\t"
-    , packagesToDevelop
+    , paste(packagesToDevelop, collapse='\n')
     , "\n\nAll other VEuPathDB packages were installed using the latest version on github. \n \n"
     , "After making any changes to the code, reload the package using\n\t"
     , "load_all(", packagesToDevelop[1], ")\n\n"
     , "Test changes by running a specific test file with\n\t"
-    , "testFile(", packagesToDevelop[1], "testFileName)\n\n"
+    , "testFile('", packagesToDevelop[1], "', 'testFileName')\n\n"
     , "or by running all tests with\n\t"
     , "devtools::test(", packagesToDevelop[1], ")\n"
   )
