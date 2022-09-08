@@ -1,13 +1,12 @@
 ### Functions that help to set up the environment
 
+veupathdbPackages <- c('plot.data','veupathUtils','microbiomeComputations')
 
 # Properly load VEuPathDB packages for development
 # packagesToDevelop must be a subset of ['plot.data','veupathUtils','microbiomeComputations']
 # All other VEuPathDB packages not in packagesToDevelop will be installed from github
 # Example use: loadDevPackages('plot.data')
-loadDevPackages <- function(packagesToDevelop) {
-
-  veupathdbPackages <- c('plot.data','veupathUtils','microbiomeComputations')
+loadDevPackages <- function(packagesToDevelop = veupathdbPackages) {
 
   if (!(packagesToDevelop %in% veupathdbPackages)) {
     stop(paste('packagesToDevelop must be a subset of ', veupathdbPackages))
