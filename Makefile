@@ -33,9 +33,6 @@ default:
 	@echo "$(C_BLUE)    make start$(C_NONE)"
 	@echo "      starts the common environment"
 	@echo ""
-	@echo "$(C_BLUE)    make start-rstudio$(C_NONE)"
-	@echo "      starts rstudio in the common environment"
-	@echo ""
 	@echo "$(C_BLUE)    make stop$(C_NONE)"
 	@echo "      stops container"
 	@echo ""
@@ -64,6 +61,3 @@ start-shell:
 .PHONY: stop
 stop:
 	@docker stop $(local_name):$(tag)
-
-# TO DO create make start-rstudio
-# Is rstudio really necessary? idk if any of us use it currently...

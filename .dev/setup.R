@@ -8,4 +8,4 @@ library(sloop)
 source('.dev/developmentFunctions.R')
 
 
-print("Finished R env prep")
+cat(crayon::cyan("Finished R env prep!\n"))

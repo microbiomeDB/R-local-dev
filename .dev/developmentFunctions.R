@@ -15,15 +15,14 @@ loadDevPackages <- function(packagesToDevelop) {
 
   # Load packages
 
+  # TODO all this does currently is set a time zone. 
+  # should do that generally maybe, rather than only for plot.data 
+  # the .env file should be in this repo
   if ('plot.data' %in% packagesToDevelop) {
     # Handle plot.data environment 
     library(dotenv)
     load_dot_env(file="plot.data/.dev/.env")
   }
-
-  # Load packages that are helpful for development
-  library(devtools)
-  library(sloop)
 
   # Load the packages (in order). If we're not developing a package, install it
   if ('veupathUtils' %in% packagesToDevelop){
@@ -33,10 +32,6 @@ loadDevPackages <- function(packagesToDevelop) {
   }
 
   if ('plot.data' %in% packagesToDevelop) {
-    # Handle plot.data environment 
-    library(dotenv)
-    load_dot_env(file="plot.data/.dev/.env")
-
     devtools::load_all('plot.data')
   } else {
     remotes::install_github('VEuPathDB/plot.data')

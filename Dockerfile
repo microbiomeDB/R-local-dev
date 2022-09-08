@@ -30,10 +30,10 @@ RUN R -e "install.packages('scales')"
 RUN R -e "install.packages('lubridate')"
 RUN R -e "install.packages('moments')"
 RUN R -e "install.packages('zoo')"
-
+RUN R -e "install.packages('crayon')"
 
 # possibly for RStudio
 EXPOSE 8787
 
-
 WORKDIR /home/dev
+RUN echo "source('.dev/setup.R')" >> /usr/local/lib/R/library/base/R/Rprofile
