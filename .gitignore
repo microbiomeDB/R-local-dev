@@ -1,0 +1,10 @@
+# Development
+.DS_store
+.vscode/
+.devcontainer/
+
+# Repositories
+Rserve/
+veupathUtils/
+microbiomeComputations/
+plot.data/
