@@ -17,6 +17,10 @@ RUN apt-get update && apt-get install -y \
 ### Rserve - note this is the official Rserve package, NOT our VEuPathDB Rserve repository
 RUN R -e "install.packages('Rserve', version='1.8-9', repos='http://rforge.net')"
 
+### BioConductor
+RUN R -e "install.packages('BiocManager')"
+RUN R -e "BiocManager::install('S4Vectors')"
+
 ### CRAN
 RUN R -e "install.packages('ape')"
 RUN R -e "install.packages('bit64')"
@@ -35,7 +39,6 @@ RUN R -e "install.packages('sloop')"
 RUN R -e "install.packages('scales')"
 RUN R -e "install.packages('vegan')"
 RUN R -e "install.packages('zoo')"
-
 
 # possibly for RStudio
 EXPOSE 8787
