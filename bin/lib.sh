@@ -2,13 +2,14 @@
 
 R_REPOSITORIES=( \
   veupathUtils \
-  plot.data \
+  corGraph \
   microbiomeComputations \
-  Rserve \
+  MicrobiomeDB \
+  microbiomeData \
 )
 
 # This could become a way to copy the dockerfile from Rserve to the top level? We don't want to copy all of it, just the CRAN packages
-# and maybe the versions of veupath R repos
+# and maybe the versions of mbio R repos
 # function configure {
 #   [ -f .env.local ] || (echo "Initializing .env.local to sample file." && cp .env.local.sample .env.local)
 #   [ "$EDITOR" == "" ] && EDITOR='/usr/bin/vi'
@@ -34,7 +35,7 @@ function doProjectsOperation {
 
 function checkoutAll {
   for project in "${R_REPOSITORIES[@]}"; do
-    git clone git@github.com:VEuPathDB/${project}.git
+    git clone git@github.com:microbiomeDB/${project}.git
   done
 }
 

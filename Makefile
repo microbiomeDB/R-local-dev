@@ -18,7 +18,7 @@ default:
 	@echo "$(C_CYAN)  ####### Project Management #######$(C_NONE)"
 	@echo ""
 	@echo "$(C_BLUE)    make install$(C_NONE)"
-	@echo "      downloads all relevant VEuPathDB R repositories"
+	@echo "      downloads all relevant MicrobiomeDB R repositories"
 	@echo ""
 	@echo "$(C_BLUE)    make update$(C_NONE)"
 	@echo "      executes git pull on all projects"

@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.2.2
+FROM rocker/r-ver:4.4.0
 # To run rstudio, change above to FROM rocker/rstudio:4.0.4
 
 ## Set a default user. Available via runtime flag `--user rserve`
@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 #### install libs
 #### Keep up to date with RServe Dockerfile if doing eda development
 
-### Rserve - note this is the official Rserve package, NOT our VEuPathDB Rserve repository
+### Rserve - note this is the official Rserve package, NOT the VEuPathDB Rserve repository
 RUN R -e "install.packages('Rserve', version='1.8-9', repos='http://rforge.net')"
 
 ### BioConductor
